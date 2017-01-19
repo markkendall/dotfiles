@@ -1,3 +1,5 @@
 [user]
 	name = Mark Kendall
 	email = mark@envylabs.com
+[credential]
+	helper = osxkeychain
