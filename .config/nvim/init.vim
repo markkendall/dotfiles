@@ -122,7 +122,7 @@ map <leader>F :CtrlP %%<cr>
 nnoremap <leader><leader> <c-^>
 
 " Remove whitespace at the ends of lines
-:map <leader>w :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+:map <leader>w :FixWhitespace<cr>
 
 " Remap the tab key to do autocompletion or indentation depending on the
 " context (from http://www.vim.org/tips/tip.php?tip_id=102)
