@@ -7,6 +7,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'danro/rename.vim'
+Plug 'janko-m/vim-test'
 Plug 'joukevandermaas/vim-ember-hbs'
 Plug 'kassio/neoterm'
 Plug 'kchmck/vim-coffee-script'
@@ -26,6 +27,8 @@ Plug 'tpope/vim-rails'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-ruby/vim-ruby'
+Plug 'vimwiki/vimwiki'
+Plug 'mxw/vim-jsx'
 
 call plug#end()
 
@@ -184,11 +187,13 @@ nnoremap <silent> <f10> :TREPLSendFile<cr>
 nnoremap <silent> <f9> :TREPLSend<cr>
 vnoremap <silent> <f9> :TREPLSend<cr>
 
-" run set test lib
-nnoremap <silent> ,rt :call neoterm#test#run('all')<cr>
-nnoremap <silent> ,rf :call neoterm#test#run('file')<cr>
-nnoremap <silent> ,rn :call neoterm#test#run('current')<cr>
-nnoremap <silent> ,rr :call neoterm#test#rerun()<cr>
+" test runner config
+let test#strategy = "neovim"
+nmap <silent> <leader>t :TestNearest<CR>
+nmap <silent> <leader>T :TestFile<CR>
+nmap <silent> <leader>a :TestSuite<CR>
+nmap <silent> <leader>l :TestLast<CR>
+nmap <silent> <leader>g :TestVisit<CR>
 
 " Useful maps
 " hide/close all terminals
@@ -205,3 +210,9 @@ command! Tmigrate :T rake db:migrate
 
 " Git commands
 command! -nargs=+ Tg :T git <args>
+
+" vimwiki
+let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+
+" Allow JSX in normal JS files
+let g:jsx_ext_required = 0
