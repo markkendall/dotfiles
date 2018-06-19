@@ -18,7 +18,16 @@ promptinit
 prompt agnoster
 
 # foreman
-alias fs="foreman start -f Procfile.dev"
+fs()
+{
+  if [ -e Procfile.dev ]
+  then
+    foreman start -f Procfile.dev
+  else
+    foreman start
+  fi
+}
+alias fs=fs
 
 # neovim
 alias vim="nvim"

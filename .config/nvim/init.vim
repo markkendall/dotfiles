@@ -3,8 +3,6 @@ call plug#begin('~/.nvim/plugged')
 
 Plug 'airblade/vim-rooter'
 Plug 'altercation/vim-colors-solarized'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'danro/rename.vim'
 Plug 'elixir-editors/vim-elixir'
@@ -12,13 +10,10 @@ Plug 'janko-m/vim-test'
 Plug 'joukevandermaas/vim-ember-hbs'
 Plug 'kassio/neoterm'
 Plug 'kchmck/vim-coffee-script'
-Plug 'kien/ctrlp.vim'
 Plug 'lambdatoast/elm.vim'
-Plug 'mhinz/vim-startify'
-Plug 'ngmy/vim-rubocop'
 Plug 'pangloss/vim-javascript'
-Plug 'rking/ag.vim'
 Plug 'benekastah/neomake'
+Plug 'mhinz/vim-mix-format'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
@@ -30,6 +25,15 @@ Plug 'tpope/vim-surround'
 Plug 'vim-ruby/vim-ruby'
 Plug 'vimwiki/vimwiki'
 Plug 'mxw/vim-jsx'
+
+if !exists('g:gui_oni')
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+  Plug 'kien/ctrlp.vim'
+  Plug 'mhinz/vim-startify'
+  Plug 'ngmy/vim-rubocop'
+  Plug 'rking/ag.vim'
+endif
 
 call plug#end()
 
@@ -181,7 +185,7 @@ endif
 
 " Neoterm test runner config
 let g:neoterm_shell = 'zsh'
-let g:neoterm_position = 'horizontal'
+" let g:neoterm_position = 'horizontal'
 let g:neoterm_automap_keys = ',tt'
 
 nnoremap <silent> <f10> :TREPLSendFile<cr>
@@ -217,3 +221,23 @@ let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}
 
 " Allow JSX in normal JS files
 let g:jsx_ext_required = 0
+
+" Format Elixir files on save
+let g:mix_format_on_save = 1
+
+" Oni
+if exists('g:gui_oni')
+  set number
+  set noswapfile
+  set smartcase
+
+  set noshowmode
+  set noruler
+  set laststatus=0
+  set noshowcmd
+
+  set mouse=a
+
+  set list
+  set listchars=trail:·
+endif
